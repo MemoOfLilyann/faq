@@ -3,11 +3,7 @@
 - 无序条目项
 - [专业术语]
 - `code`
-
-1. 有序条目项
-2. [链接](https://en.wikipedia.org/wiki/Main_Page)
-3. *斜体*
-4. **加粗**
+- [链接][链接]
 
 这里是正文
 
@@ -18,3 +14,4 @@ fn main() {
 }
 ```
 
+[链接]: https://en.wikipedia.org/wiki/Main_Page

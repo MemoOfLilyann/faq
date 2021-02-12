@@ -1,7 +1,7 @@
 [package]
 name = "rust-zh-faq"
 version = "0.1.0"
-authors = ["Xidorn Quan <me@upsuper.org>"]
+authors = ["Xidorn Quan <me@upsuper.org>", "Yannick <iamnobody>"]
 edition = "2018"
 license = "GPL-3.0-only"
 publish = false
