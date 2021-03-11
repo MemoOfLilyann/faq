@@ -74,7 +74,7 @@ where
             }
             Event::Code(code) => write!(output, "<code>{}</code>", escape(&code)),
             Event::Html(html) => write!(output, "{}", html),
-            Event::SoftBreak => todo!(),
+            Event::SoftBreak => write!(output, "<br>"),
             Event::HardBreak => write!(output, "<br>"),
             Event::Rule => unimplemented!("rule not supported"),
             Event::FootnoteReference(_) => unimplemented!("footnote not supported"),
@@ -110,6 +110,17 @@ where
             }
             Tag::List(None) => write!(output, "<ul>"),
             Tag::Item => write!(output, "<li>"),
+            Tag::Image(_, dest, title) => {
+                write!(output, "<img")?;
+                if !dest.is_empty() {
+                    write!(output, r#" src="{}""#, dest)?;
+                }
+                if !title.is_empty() {
+                    write!(output, r#" alt="{}""#, title)?;
+                }
+                write!(output, r#" style="max-width: 100%;""#)?;
+                write!(output, ">")
+            }
             tag => unimplemented!("tag {:?} not supported", tag),
         }
     }
@@ -127,6 +138,7 @@ where
             }
             Tag::List(None) => write!(output, "</ul>"),
             Tag::Item => write!(output, "</li>"),
+            Tag::Image(_, _, _) => write!(output, "</a>"),
             tag => unimplemented!("tag {:?} not supported", tag),
         }
     }
